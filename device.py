@@ -39,3 +39,14 @@ def to_status(device):
     return {"device": device["name"], "status": status, "celsius": device["temp"]}
 
 print(to_status(readings[3]))
+
+def by_room(devices):
+    rooms = {}
+    for device in devices:
+        room = device["room"]
+        if room not in rooms:
+            rooms[room] = []
+        rooms[room].append(device["name"])
+    return rooms
+
+print(by_room(readings))
